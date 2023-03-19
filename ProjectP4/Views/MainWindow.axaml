@@ -14,7 +14,13 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/Assets/minesweeperlogo.png"/>
+            <Button Width="150" Command="{Binding Newgame }">New Game </Button>
+            <Button Width="150" Command="{Binding Exit }">Exit </Button>
+        </StackPanel>
+       
+    </Grid>
 </Window>

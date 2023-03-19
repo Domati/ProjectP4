@@ -1,6 +1,22 @@
-﻿namespace ProjectP4.ViewModels;
+﻿using System.Runtime.InteropServices.JavaScript;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+
+
+
+namespace ProjectP4.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting => "Test GIT";
+    public string Greeting => "TESTOWY";
+
+    public void Newgame()
+    {
+        
+    }
+
+    public void Exit()
+    {
+        if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime) lifetime.Shutdown(); 
+    }
 }

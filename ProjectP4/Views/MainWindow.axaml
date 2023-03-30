@@ -15,12 +15,15 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <Grid>
+    <Grid ShowGridLines="True">
+        
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Image Width="250" Height="190" Source="/Assets/minesweeperlogo1.png"/>
-            <Button Width="150" Command="{Binding Newgame }">New Game </Button>
-            <Button Width="150" Command="{Binding Exit }">Exit </Button>
+            <Image Width="150" Height="100" Source="/Assets/minesweeperlogo1.png"/>
+            <Button Margin="1" Width="150" Command="{Binding Newgame }">New Game </Button>
+            <Button Margin="1" Width="150" Command="{Binding Options }">Options </Button>
+            <Button Margin="1" Width="150" Command="{Binding Exit }">Exit </Button>
         </StackPanel>
        
-    </Grid>
+   
+        </Grid>
 </Window>

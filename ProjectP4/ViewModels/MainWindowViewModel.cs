@@ -14,7 +14,10 @@ public class MainWindowViewModel : ViewModelBase
     {
         
     }
-
+    public void Options()
+    {
+        
+    }
     public void Exit()
     {
         if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime) lifetime.Shutdown(); 

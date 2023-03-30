@@ -16,8 +16,8 @@
     </Design.DataContext>
     
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="/Assets/minesweeperlogo.png"/>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Image Width="250" Height="190" Source="/Assets/minesweeperlogo1.png"/>
             <Button Width="150" Command="{Binding Newgame }">New Game </Button>
             <Button Width="150" Command="{Binding Exit }">Exit </Button>
         </StackPanel>

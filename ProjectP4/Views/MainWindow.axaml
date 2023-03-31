@@ -20,8 +20,13 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
             <Image Width="150" Height="100" Source="/Assets/minesweeperlogo1.png"/>
             <Button Margin="1" Width="150" Command="{Binding Newgame }">New Game </Button>
+            <Button Margin="1" Width="150" Command="{Binding Leaderboard }">Leaderboard </Button>
             <Button Margin="1" Width="150" Command="{Binding Options }">Options </Button>
             <Button Margin="1" Width="150" Command="{Binding Exit }">Exit </Button>
+            
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
+         <Label>by Mateusz D</Label>   
         </StackPanel>
        
    

@@ -12,7 +12,7 @@
                 <Grid Background="Red" ColumnDefinitions="Auto,Auto,*,Auto,Auto">
                         <Rectangle Grid.Column="0" Fill="Red" Width="40" ></Rectangle>
                         <Rectangle Grid.Column="1" Fill="Blue" Width="40"></Rectangle>
-                        <Rectangle Grid.Column="2" Fill="Red " Width="40"></Rectangle>
+                        <Rectangle Grid.Column="2" Fill="Red" Width="40"></Rectangle>
                         
                         <StackPanel Grid.Column="2"><Label>Testowy</Label></StackPanel>
                         <Rectangle Grid.Column="3" Fill="White" Width="40"></Rectangle>

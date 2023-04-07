@@ -21,7 +21,9 @@ public class MainWindowViewModel : ViewModelBase
     }
     public void Options()
     {
-        
+        var options = new Options();
+        options.Title = "Options";
+        options.Show();
     }
 
     public void Leaderboard()

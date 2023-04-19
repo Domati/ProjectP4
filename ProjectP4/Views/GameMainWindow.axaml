@@ -1,35 +1,30 @@
-<Window xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ProjectP4.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800" Height="450"
         x:Class="ProjectP4.Views.GameMainWindow"
         Title="GameMainWindow">
     
-        <StackPanel>
-                <!-- top bar -->
-                <Grid Background="Red" ColumnDefinitions="Auto,Auto,*,Auto,Auto">
-                        <Rectangle Grid.Column="0" Fill="Red" Width="40" ></Rectangle>
-                        <Rectangle Grid.Column="1" Fill="Blue" Width="40"></Rectangle>
-                        <Rectangle Grid.Column="2" Fill="Red"></Rectangle>
-                        
-                        <StackPanel Grid.Column="2"><Label>Testowy</Label></StackPanel>
-                        <Rectangle Grid.Column="3" Fill="Yellow" Width="40"></Rectangle>
-                        <Rectangle Grid.Column="4" Fill="Black" Width="40"></Rectangle>
-              
-                </Grid>
-                <!-- middle bar -->
-                <Label>Środkowy Grid</Label>
-                <Grid>
-                        
-                </Grid>
-                <Label> Dolny Grid</Label>
-                <!-- bottom bar -->
-                <Grid>
-                        
-                </Grid>
-        </StackPanel>
-        
-        
-</Window>
+        <Design.DataContext>
+        <viewModels:BoardViewModel />
+    </Design.DataContext>
+
+    <ItemsControl Items="{Binding Fields}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Background="Black" Rows="{Binding Global.CurrentRowsAndColumns}"
+                             Columns="{Binding Global.CurrentRowsAndColumns}" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ContentControl>
+                    <views:Field Width="100" Height="100" DataContext="{Binding .}" />
+                </ContentControl>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:ProjectP4.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ProjectP4.Views.Options">
+   <Design.DataContext>
+       <viewModels:ControlsViewModel/>
+   </Design.DataContext>
+    
+    <StackPanel Orientation="Vertical" MaxHeight="400" MaxWidth="300">
+        <Label>Rows: </Label>
+        <NumericUpDown Minimum="5" Value="{Binding RowsAndColumns}" Maximum="50"/>
+        <Label>Bombs: </Label>
+        <NumericUpDown Minimum="5" Value="{Binding AmountBombs}" Maximum="{Binding MaxBombs}"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding OnLoadBoardClicked}">Load Board</Button>
+            <Button Background="Red" FontWeight="Bold" Command="{Binding OnStartClicked}" Content="{Binding StartOrResetButtonText}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

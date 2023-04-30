@@ -11,7 +11,14 @@
     </Design.DataContext>
     
     <Panel Width="100" Height="100">
-        <Button Opacity="0" PointerPressed="FieldPressed" Command="{Binding OnFieldLeftClicked}"></Button>
+        <Button Opacity="0" PointerPressed="FieldPressed" Command="{Binding OnFieldLeftClicked}" ZIndex="100"/>
+        <Panel Background="{Binding CoverColor}" IsVisible="{Binding IsCovered}"/>
+        <Panel Background="{Binding Background}">
+            <Label Content="{Binding ValueColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsVisible="{Binding Number}"/>
+            <Image Source="/Assets/bomb.png" IsVisible="{Binding HasBomb}"/>
+        </Panel>
+        <Image Source="/Assets/flag.png" IsVisible="{Binding IsFlagged}" ZIndex="5"/>
+        
     </Panel>
     
 </UserControl>

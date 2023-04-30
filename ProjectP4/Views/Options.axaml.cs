@@ -4,12 +4,11 @@ using Avalonia.Markup.Xaml;
 
 namespace ProjectP4.Views;
 
-public partial class Board : UserControl
+public partial class Options : UserControl
 {
-    public Board()
+    public Options()
     {
         InitializeComponent();
-
     }
 
     private void InitializeComponent()

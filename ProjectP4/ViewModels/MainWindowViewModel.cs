@@ -20,7 +20,7 @@ public class MainWindowViewModel : ViewModelBase
     public void Newgame()
     {
         var newWindow = new GameMainWindow();
-        newWindow.Title = "GameMainWindow";
+      
         newWindow.Show();
     }
    

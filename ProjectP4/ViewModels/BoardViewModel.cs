@@ -121,7 +121,7 @@ namespace ProjectP4.ViewModels
                 IEnumerable<FieldViewModel> surroundingFields = GetSurroundingFields(field.Position);
                 int value = surroundingFields.Count(f => f.HasBomb);
                 field.Value = field.HasBomb ? 0 : value;
-                field.HasNumber = field.Value > 0;
+                field.Number = field.Value > 0;
             }
         }
 
@@ -153,7 +153,7 @@ namespace ProjectP4.ViewModels
 
         public void UncoverSurroundingZeros(FieldViewModel field)
         {
-            if (field.HasNumber) return;
+            if (field.Number) return;
 
             HashSet<FieldViewModel> fieldsToUncoverSurroundingFields = new() {field};
             int lastAmountFields;
@@ -165,7 +165,7 @@ namespace ProjectP4.ViewModels
                     fieldsToUncoverSurroundingFields)) fieldsToUncover.Add(fieldViewModel);
 
                 foreach (FieldViewModel fieldToUncover in fieldsToUncover.Where(fieldToUncover =>
-                    !fieldToUncover.HasNumber)) fieldsToUncoverSurroundingFields.Add(fieldToUncover);
+                    !fieldToUncover.Number)) fieldsToUncoverSurroundingFields.Add(fieldToUncover);
             } while (fieldsToUncoverSurroundingFields.Count != lastAmountFields);
 
             foreach (FieldViewModel fieldToUncover in fieldsToUncover) Uncover(fieldToUncover);
@@ -247,7 +247,7 @@ namespace ProjectP4.ViewModels
                 field.IsCovered = true;
                 field.Value = 0;
                 field.IsFlagged = false;
-                field.HasNumber = false;
+                field.Number = false;
                 _bombs.Clear();
             }
 

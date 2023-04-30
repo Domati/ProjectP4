@@ -13,7 +13,7 @@ namespace ProjectP4.ViewModels
 
         private int _rowsAndColumns = 15;
 
-        private string _startOrResetButtonText = "Start";
+        private string _startOrResetButtonText = "Start"; //text przycisku start
         public bool NeedsReset { get; set; }
 
         public ControlsViewModel()
@@ -22,19 +22,19 @@ namespace ProjectP4.ViewModels
             OnStartClicked = ReactiveCommand.Create(StartOrReset);
         }
 
-        public int AmountBombs
+        public int AmountBombs //liczba bomb podana przez użytkownika
         {
             get => _amountBombs;
             set => this.RaiseAndSetIfChanged(ref _amountBombs, value);
         }
 
-        public int RowsAndColumns
+        public int RowsAndColumns //funkcja do odczytywania liczby kolumn i obliczanie maksymalnej liczby bomb
         {
             get => _rowsAndColumns;
             set
             {
                 this.RaiseAndSetIfChanged(ref _rowsAndColumns, value);
-                MaxBombs = (int) (Math.Pow(value, 2) / 2);
+                MaxBombs = (int) (Math.Pow(value, 2) / 2); //maksymalna liczba bomb
             }
         }
 
@@ -44,7 +44,7 @@ namespace ProjectP4.ViewModels
             set => this.RaiseAndSetIfChanged(ref _maxBombs, value);
         }
 
-        public string StartOrResetButtonText
+        public string StartOrResetButtonText //przycisk startowania gry
         {
             get => _startOrResetButtonText;
             set => this.RaiseAndSetIfChanged(ref _startOrResetButtonText, value);

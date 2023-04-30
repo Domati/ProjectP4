@@ -23,17 +23,7 @@ public class MainWindowViewModel : ViewModelBase
         newWindow.Title = "GameMainWindow";
         newWindow.Show();
     }
-    public void Options()
-    {
-        var options = new Options();
-        options.Title = "Options";
-        options.Show();
-    }
-
-    public void Leaderboard()
-    {
-        
-    }
+   
     public void Exit()
     {
         if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime) lifetime.Shutdown(); 

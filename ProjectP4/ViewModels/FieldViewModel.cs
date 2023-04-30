@@ -13,10 +13,8 @@ namespace ProjectP4.ViewModels
 
         private IBrush _background;
 
-        private readonly Global _global;
-
         private bool _hasBomb;
-        private bool _hasNumber;
+        private bool _Number;
 
         private bool _isCovered = true;
 
@@ -26,9 +24,8 @@ namespace ProjectP4.ViewModels
 
         private IBrush _valueColor = Brushes.Black;
 
-        public FieldViewModel(int value, Point position, BoardViewModel board, Global global)
+        public FieldViewModel(int value, Point position, BoardViewModel board)
         {
-            _global = global;
             OnFieldLeftClicked = ReactiveCommand.Create(FieldLeftClicked);
             Position = position;
             Value = value;
@@ -75,10 +72,10 @@ namespace ProjectP4.ViewModels
 
         public IBrush CoverColor { get; set; }
 
-        public bool HasNumber
+        public bool Number
         {
-            get => _hasNumber;
-            set => this.RaiseAndSetIfChanged(ref _hasNumber, value);
+            get => _Number;
+            set => this.RaiseAndSetIfChanged(ref _Number, value);
         }
 
         public bool IsFlagged
@@ -96,15 +93,15 @@ namespace ProjectP4.ViewModels
 
         public void FieldLeftClicked()
         {
-            if (IsFlagged || !_global.GameRunning || _global.SolverActive) return;
+            if (IsFlagged || !_board.GameRunning) return;
             Console.WriteLine($"Field Left clicked X: {Position.X} Y: {Position.Y}");
 
 
-            if (!_global.BombsArePlaced) _board.FillInBombs(Position);
+            if (!_board.BombsArePlaced) _board.FillInBombs(Position);
 
             if (!IsCovered)
             {
-                if (HasNumber) _board.UncoverEveryFieldSurroundingIfValueMatchesFlags(this);
+                if (Number) _board.UncoverEveryFieldSurroundingIfValueMatchesFlags(this);
                 if (_board.HasWon()) _board.Win();
             }
             else
@@ -113,7 +110,7 @@ namespace ProjectP4.ViewModels
                 if (HasBomb)
                 {
                     List<FieldViewModel> uncoveredBombs = new() { this };
-                    _board.GameOver(uncoveredBombs);
+                    _board.GameOver();
                 }
                 else
                 {
@@ -125,72 +122,22 @@ namespace ProjectP4.ViewModels
 
         public void FieldRightClicked()
         {
-            if (!IsCovered || !_global.GameRunning || _global.SolverActive) return;
-            Console.WriteLine($"Field Right clicked X: {Position.X} Y: {Position.Y}");
-            if (!IsFlagged)
+            if (IsCovered && _board.GameRunning)
             {
-                IsFlagged = true;
-                _global.FlagsSet++;
+                Console.WriteLine($"Field Right clicked X: {Position.X} Y: {Position.Y}");
+                if (!IsFlagged)
+                {
+                    IsFlagged = true;
+                    _board.FlagsSet++;
+                }
+                else
+                {
+                    _board.FlagsSet--;
+                    IsFlagged = false;
+                }
+
+                if (_board.HasWon()) _board.Win();
             }
-            else
-            {
-                _global.FlagsSet--;
-                IsFlagged = false;
-            }
-
-            if (_board.HasWon()) _board.Win();
-        }
-
-        private void UpdateFontColor()
-        {
-            HasNumber = true;
-
-            switch (Value)
-            {
-                case 0:
-                    HasNumber = false;
-                    break;
-                case 1:
-                    ValueColor = Brushes.Blue;
-                    HasNumber = true;
-                    break;
-                case 2:
-                    ValueColor = Brushes.Green;
-                    HasNumber = true;
-                    break;
-                case 3:
-                    ValueColor = Brushes.Red;
-                    HasNumber = true;
-                    break;
-                case 4:
-                    ValueColor = Brushes.Purple;
-                    HasNumber = true;
-                    break;
-                case 5:
-                    ValueColor = Brushes.Orange;
-                    HasNumber = true;
-                    break;
-                case 6:
-                    ValueColor = Brushes.Yellow;
-                    HasNumber = true;
-                    break;
-                case 7:
-                    ValueColor = Brushes.Pink;
-                    HasNumber = true;
-                    break;
-                case 8:
-                    ValueColor = Brushes.Black;
-                    HasNumber = true;
-                    break;
-            }
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((FieldViewModel)obj);
         }
 
         public override int GetHashCode()
@@ -207,5 +154,60 @@ namespace ProjectP4.ViewModels
         {
             return !Equals(left, right);
         }
+
+
+        private void UpdateFontColor()
+        {
+            Number = true;
+
+            switch (Value)
+            {
+                case 0:
+                    Number = false;
+                    break;
+                case 1:
+                    ValueColor = Brushes.Blue;
+                    Number = true;
+                    break;
+                case 2:
+                    ValueColor = Brushes.Green;
+                    Number = true;
+                    break;
+                case 3:
+                    ValueColor = Brushes.Red;
+                    Number = true;
+                    break;
+                case 4:
+                    ValueColor = Brushes.Purple;
+                    Number = true;
+                    break;
+                case 5:
+                    ValueColor = Brushes.Orange;
+                    Number = true;
+                    break;
+                case 6:
+                    ValueColor = Brushes.Yellow;
+                    Number = true;
+                    break;
+                case 7:
+                    ValueColor = Brushes.Pink;
+                    Number = true;
+                    break;
+                case 8:
+                    ValueColor = Brushes.Black;
+                    Number = true;
+                    break;
+            }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((FieldViewModel)obj);
+        }
+
+
     }
 }

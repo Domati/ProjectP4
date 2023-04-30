@@ -27,7 +27,7 @@ namespace ProjectP4.ViewModels
             set => this.RaiseAndSetIfChanged(ref _amountBombs, value);
         }
 
-        public void Reset()
+        public void Reset() //funkcja resetu opcji
         {
             InfoText = "";
             AmountBombs = 0;

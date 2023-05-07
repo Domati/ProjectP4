@@ -7,7 +7,7 @@ namespace ProjectP4.ViewModels
     public class ControlsViewModel : ViewModelBase
     {
         public BoardViewModel Board { get; set; }
-        private int _amountBombs = 50;
+        private int _amountBombs = 25;
 
         private int _maxBombs = 112;
 

@@ -14,7 +14,7 @@ namespace ProjectP4.ViewModels
         private IBrush _background;
 
         private bool _hasBomb;
-        private bool _Number;
+        private bool _number;
 
         private bool _isCovered = true;
 
@@ -74,8 +74,8 @@ namespace ProjectP4.ViewModels
 
         public bool Number
         {
-            get => _Number;
-            set => this.RaiseAndSetIfChanged(ref _Number, value);
+            get => _number;
+            set => this.RaiseAndSetIfChanged(ref _number, value);
         }
 
         public bool IsFlagged
@@ -109,7 +109,6 @@ namespace ProjectP4.ViewModels
                 _board.Uncover(this);
                 if (HasBomb)
                 {
-                    List<FieldViewModel> uncoveredBombs = new() { this };
                     _board.GameOver();
                 }
                 else

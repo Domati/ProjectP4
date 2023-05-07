@@ -14,7 +14,7 @@ namespace ProjectP4.ViewModels
         private readonly InfoTextViewModel _infoTextViewModel;
         private readonly ControlsViewModel _controlsViewModel;
         private readonly Random _rnd = new();
-        private int _amountBombs = 50;
+        private int _amountBombs = 25;
 
         private int _rowsColumns = 15;
         private DateTime _startTime;

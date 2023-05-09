@@ -12,15 +12,17 @@
     <Panel Width="100" Height="100">
         <Button Opacity="0" PointerPressed="FieldPressed" Command="{Binding OnFieldLeftClicked}" ZIndex="100"
                 Width="100" Height="100" />
-        <Panel Background="{Binding CoverColor}" ZIndex="1" IsVisible="{Binding IsCovered}" />
+        <Panel  ZIndex="1" IsVisible="{Binding IsCovered}" ><Image Source="/Assets/field.png"/></Panel>
+        
         <Panel Background="{Binding Background}">
             <Label Content="{Binding Value}" FontSize="60" FontWeight="SemiBold"
                    Foreground="{Binding ValueColor}" HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center"
-                   IsVisible="{Binding Number}" />
+                   IsVisible="{Binding Number}" ZIndex="5"/>
+            
             <Image Source="/Assets/bomb.png" IsVisible="{Binding HasBomb}" />
         </Panel>
-        <Image Source="/Assets/flag.png" IsVisible="{Binding IsFlagged}" ZIndex="5" />
+        <Image Source="/Assets/flag.png" IsVisible="{Binding IsFlagged}" ZIndex="1" />
     </Panel>
     
 </UserControl>

@@ -3,11 +3,12 @@
         xmlns:vm="using:ProjectP4.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
         x:Class="ProjectP4.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ProjectP4">
+        Title="ProjectP4"
+        Height="400" Width="250">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,13 +16,12 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="True" Background="#FF878787">
         
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Background="#FF878787">
             <Image Width="150" Height="100" Source="/Assets/minesweeperlogo1.png"/>
-            <Button Margin="1" Width="150" Command="{Binding Newgame }">New Game </Button>
-            <Button Margin="1" Width="150" Command="{Binding Options }">Options </Button>
-            <Button Margin="1" Width="150" Command="{Binding Exit }">Exit </Button>
+            <Button Margin="1" Width="150" Command="{Binding Newgame }" Background="White" >New Game </Button>
+            <Button Margin="1" Width="150" Command="{Binding Exit }" Background="White" >Exit </Button>
             
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">

@@ -96,8 +96,8 @@ namespace ProjectP4.ViewModels
                     {
                         FieldViewModel field = new(0, new Point(i, j), this);
                         dark = !dark;
-                        field.Background = dark ? Brushes.Beige : Brushes.LightGray;
-                        field.CoverColor = dark ? Brushes.Green : Brushes.LightGreen;
+                        field.Background = dark ? Brushes.Gray : Brushes.LightGray;
+                        field.CoverColor = dark ? Brushes.LightGray : Brushes.Gray;
                         Fields.Add(field);
                     }
                 }

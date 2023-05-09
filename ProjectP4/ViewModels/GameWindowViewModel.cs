@@ -1,3 +1,6 @@
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+
 namespace ProjectP4.ViewModels;
 
 public class GameWindowViewModel : ViewModelBase
@@ -13,4 +16,8 @@ public class GameWindowViewModel : ViewModelBase
     public BoardViewModel BoardViewModel { get; set; }
     public InfoTextViewModel InfoTextViewModel { get; set; }
     public ControlsViewModel ControlsViewModel { get; set; }
+    public void Exit()
+    {
+        if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime) lifetime.Shutdown(); 
+    }
 }

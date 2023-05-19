@@ -10,7 +10,7 @@ public partial class GameMainWindow : Window
     public GameMainWindow()
     {
         InitializeComponent();
-        DataContext = new GameWindowViewModel();
+        DataContext = new GameWindowViewModel(this);
 #if DEBUG
         this.AttachDevTools();
 #endif

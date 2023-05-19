@@ -12,6 +12,8 @@
     <Design.DataContext>
         <viewModels:GameWindowViewModel />
     </Design.DataContext>
+    
+    
     <StackPanel Orientation="Vertical" Background="#FF878787">
         <Viewbox Stretch="Uniform">
             <views:Board DataContext="{Binding BoardViewModel}" />
@@ -19,7 +21,13 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
             <views:Options DataContext="{Binding ControlsViewModel}" />
             <views:InfoText DataContext="{Binding InfoTextViewModel}" />
-            <Button Margin="1" Width="150" Command="{Binding Exit }" Background="White" >Exit </Button>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                 <Button Margin="20" Content="Close" IsCancel="True" Command="{Binding Exit}"
+                                 CommandParameter="{Binding ElementName=GameMainWindow}"/>
+            </StackPanel>
+           
+
+            
         </StackPanel>
     </StackPanel>
     </Window>

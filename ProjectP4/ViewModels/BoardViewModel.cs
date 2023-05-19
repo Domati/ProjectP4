@@ -271,7 +271,7 @@ namespace ProjectP4.ViewModels
         {
             GameRunning = false;
             _infoTextViewModel.InfoText =
-                $"You Won! \n You needed \n {(DateTime.Now - _startTime).TotalMilliseconds}ms";
+                $"You Won! \n You needed \n {(DateTime.Now - _startTime).TotalSeconds} seconds";
         }
 
         public void Start()
